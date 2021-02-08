@@ -1,0 +1,6 @@
+INSERT INTO dna(dna_pattern,mutant) VALUES ('[ATGCGA, CAGTGC, TTATGT, AGAAGG, CCCCTA, TCACTG]',true);
+INSERT INTO dna(dna_pattern,mutant) VALUES ('[ATGCGA, CAGTGC, TTATTT, AGACGG, GCGTCA, TCACTG]',false);
+INSERT INTO dna(dna_pattern,mutant) VALUES ('[ATGCGA, TAGTGC, TTATTT, AGTCGG, GCGTCA, TCACTG]',true);
+INSERT INTO dna(dna_pattern,mutant) VALUES ('[ATGCGA, TbGTGC, TTATTT, AGTCGG, GCGTCA, TCACTG]',true);
+INSERT INTO dna(dna_pattern,mutant) VALUES ('[ATGCGA, TAGTGb, TTATTT, AGTCGG, GCGTCA, TCACTG]',true);
+INSERT INTO dna(dna_pattern,mutant) VALUES ('[ATGCGA, CAGAGC, TTATGT, AGAAGG, CCCCTA, TCACTG]',true);

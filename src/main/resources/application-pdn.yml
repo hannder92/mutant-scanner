@@ -1,0 +1,22 @@
+server:
+    port: 8090
+
+cloud:
+    aws:
+        stack:
+            auto: false
+        region:
+            auto: false
+            static: us-east-1
+
+aws:
+    secretsmanager:
+        enabled: true
+        fail-fast: false
+        prefix: /secrets
+        name: ${spring.application.name}
+    paramstore:
+        enabled: true
+        fail-fast: false
+        prefix: /config
+        name: ${spring.application.name}
