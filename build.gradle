@@ -8,8 +8,6 @@ group = 'com.mercadolibre.mutant.scanner'
 version = '1.0.0'
 sourceCompatibility = '11'
 
-check.dependsOn jacocoTestReport
-
 repositories {
 	mavenCentral()
 }
