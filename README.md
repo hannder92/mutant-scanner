@@ -116,7 +116,9 @@ gradle test
   - URL Local: http://localhost:8090/xmen-project/api/swagger-ui.html
 
 ## API en la nube
-  - URL WEB: http://ec2-52-90-228-61.compute-1.amazonaws.com:8090/xmen-project/api/swagger-ui.html
+- URL WEB: http://ec2-52-90-228-61.compute-1.amazonaws.com:8090/xmen-project/api/
+- URL SWAGGER: http://ec2-52-90-228-61.compute-1.amazonaws.com:8090/xmen-project/api/swagger-ui.html
 
+##Gracias
 
   
