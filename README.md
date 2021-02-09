@@ -89,5 +89,15 @@ Test-Automáticos, Code coverage > 80%, Diagrama de Secuencia / Arquitectura del
 - Postgres >= 13.0
 - Gradle 6.7
 
+##Reporte de Coverage:
+- https://htmlpreview.github.io/?https://github.com/hannder92/mutant-scanner/blob/master/coverage/index.html
 
-
+##Instalacion
+- Clonar Repositorio
+- Instalar dependencias
+  - gradle clean build --refresh-dependencies
+- Instalar PostgreSQL
+  - Crear base de datos xmen-project (usuario: admin, contraseña: admin)
+  - Ejecutar esquema de base de datos https://github.com/hannder92/mutant-scanner/blob/master/src/main/resources/scheme.sql
+  - Insertar datos de prueba https://github.com/hannder92/mutant-scanner/blob/master/src/main/resources/data.sql
+  
