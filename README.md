@@ -101,6 +101,7 @@ Test-Automáticos, Code coverage > 80%, Diagrama de Secuencia / Arquitectura del
 ## Desplegar API
 ### Development
 - Ejecutar CMD o Git Bash dentro de la carpeta del proyecto
+- Ejecutar el comando ```gradle clean build```
 - Ejecutar el comando ```java -jar build/libs/mutant-scanner-1.0.0.jar```
 - El API se ejecutara en http://localhost:8090/xmen-project/api
 - El API esta documentado y se puede consumir a traves de: http://localhost:8090/xmen-project/api/swagger-ui.html
