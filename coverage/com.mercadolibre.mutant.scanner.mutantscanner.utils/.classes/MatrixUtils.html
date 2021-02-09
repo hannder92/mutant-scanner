@@ -1,0 +1,205 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MatrixUtils</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.mercadolibre.mutant.scanner.mutantscanner.utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MatrixUtils (com.mercadolibre.mutant.scanner.mutantscanner.utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MatrixUtils</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83,3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    98,1%
+  </span>
+  <span class="absValue">
+    (52/ 53)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.mercadolibre.mutant.scanner.mutantscanner.utils;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import java.util.ArrayList;
+<i>4</i>&nbsp;import java.util.Arrays;
+<i>5</i>&nbsp;import java.util.List;
+<i>6</i>&nbsp;
+<b class="nc"><i>7</i>&nbsp;public class MatrixUtils {</b>
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;    /**
+<i>10</i>&nbsp;     * return final matrix to evaluate from string[]
+<i>11</i>&nbsp;     * @param dnaList
+<i>12</i>&nbsp;     * @return String[][]
+<i>13</i>&nbsp;     */
+<i>14</i>&nbsp;    public static String[][] getMatrixByStringArray(String[] dnaList){
+<b class="fc"><i>15</i>&nbsp;        int N = dnaList[0].length();</b>
+<b class="fc"><i>16</i>&nbsp;        String[][] finalMatrix = new String[N][N];</b>
+<b class="fc"><i>17</i>&nbsp;        int count = 0;</b>
+<i>18</i>&nbsp;        char[] charArray;
+<b class="fc"><i>19</i>&nbsp;        for (String string: Arrays.asList(dnaList)) {</b>
+<b class="fc"><i>20</i>&nbsp;            charArray = string.toCharArray();</b>
+<b class="fc"><i>21</i>&nbsp;            for (int i = 0; i &lt; charArray.length; i++) {</b>
+<b class="fc"><i>22</i>&nbsp;                finalMatrix[count][i] = String.valueOf(charArray[i]);</b>
+<i>23</i>&nbsp;            }
+<b class="fc"><i>24</i>&nbsp;            count+=1;</b>
+<b class="fc"><i>25</i>&nbsp;        }</b>
+<b class="fc"><i>26</i>&nbsp;        return finalMatrix;</b>
+<i>27</i>&nbsp;    }
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    /**
+<i>30</i>&nbsp;     * Evaluate the all possible combinations
+<i>31</i>&nbsp;     * @param combinations
+<i>32</i>&nbsp;     * @return boolean
+<i>33</i>&nbsp;     */
+<i>34</i>&nbsp;    public static boolean evaluateArrays(List&lt;String[]&gt; combinations) {
+<i>35</i>&nbsp;        int count;
+<i>36</i>&nbsp;        String auxLetter;
+<b class="fc"><i>37</i>&nbsp;        for (String[] combination : combinations) {</b>
+<b class="fc"><i>38</i>&nbsp;            auxLetter = combination[0];</b>
+<b class="fc"><i>39</i>&nbsp;            count = 1;</b>
+<b class="fc"><i>40</i>&nbsp;            for (int i = 1; i &lt; combination.length; i++) {</b>
+<b class="fc"><i>41</i>&nbsp;                if (combination[i]!=null &amp;&amp; combination[i].equals(auxLetter)) {</b>
+<b class="fc"><i>42</i>&nbsp;                    count += 1;</b>
+<b class="fc"><i>43</i>&nbsp;                    if (count &gt;= 4) return true;</b>
+<i>44</i>&nbsp;                } else {
+<b class="fc"><i>45</i>&nbsp;                    count = 1;</b>
+<b class="fc"><i>46</i>&nbsp;                    auxLetter = combination[i];</b>
+<i>47</i>&nbsp;                }
+<i>48</i>&nbsp;            }
+<b class="fc"><i>49</i>&nbsp;        }</b>
+<b class="fc"><i>50</i>&nbsp;        return false;</b>
+<i>51</i>&nbsp;    }
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;    /**
+<i>54</i>&nbsp;     *
+<i>55</i>&nbsp;     * @param matrix
+<i>56</i>&nbsp;     * @return List&lt;Sting[]&gt; combinations
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;    public static List&lt;String[]&gt; getCombinations(String[][] matrix) {
+<b class="fc"><i>59</i>&nbsp;        List&lt;String[]&gt; combinations = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>60</i>&nbsp;        String[] combinationRow = new String[matrix.length];</b>
+<b class="fc"><i>61</i>&nbsp;        String[] combinationColumn = new String[matrix.length];</b>
+<b class="fc"><i>62</i>&nbsp;        for (int i = 0; i &lt; matrix.length; i++) {</b>
+<b class="fc"><i>63</i>&nbsp;            for (int j = 0; j &lt; matrix.length; j++) {</b>
+<b class="fc"><i>64</i>&nbsp;                combinationRow[j] = matrix[i][j];</b>
+<b class="fc"><i>65</i>&nbsp;                combinationColumn[j] = matrix[j][i];</b>
+<i>66</i>&nbsp;            }
+<b class="fc"><i>67</i>&nbsp;            combinations.add(combinationRow.clone());</b>
+<b class="fc"><i>68</i>&nbsp;            combinations.add(combinationColumn.clone());</b>
+<b class="fc"><i>69</i>&nbsp;            combinations.addAll(getDiagonalCombinations(matrix));</b>
+<b class="fc"><i>70</i>&nbsp;            combinations.addAll(getDiagonalCombinations(getMirrorMatrix(matrix)));</b>
+<i>71</i>&nbsp;        }
+<b class="fc"><i>72</i>&nbsp;        return combinations;</b>
+<i>73</i>&nbsp;    }
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;    /**
+<i>76</i>&nbsp;     *  return diagonals combinations
+<i>77</i>&nbsp;     * @param matrix
+<i>78</i>&nbsp;     * @return List&lt;String[]&gt; diagonalCombinations
+<i>79</i>&nbsp;     */
+<i>80</i>&nbsp;    public static List&lt;String[]&gt; getDiagonalCombinations(String[][] matrix) {
+<b class="fc"><i>81</i>&nbsp;        int N = matrix.length;</b>
+<b class="fc"><i>82</i>&nbsp;        String[] combination = new String[N];</b>
+<b class="fc"><i>83</i>&nbsp;        List&lt;String[]&gt; combinations  = new ArrayList&lt;&gt;();</b>
+<i>84</i>&nbsp;
+<b class="fc"><i>85</i>&nbsp;        for(int j=N-1; j&gt;=0; j--){</b>
+<b class="fc"><i>86</i>&nbsp;            for(int k=0; k&lt;N; k++){</b>
+<b class="fc"><i>87</i>&nbsp;                if ((j + k) &lt; N) {</b>
+<b class="fc"><i>88</i>&nbsp;                    combination[k] = matrix[k][j + k];</b>
+<i>89</i>&nbsp;                } else {
+<i>90</i>&nbsp;                    break;
+<i>91</i>&nbsp;                }
+<i>92</i>&nbsp;            }
+<b class="fc"><i>93</i>&nbsp;            combinations.add(combination.clone());</b>
+<i>94</i>&nbsp;        }
+<i>95</i>&nbsp;
+<b class="fc"><i>96</i>&nbsp;        for(int i=1; i&lt;N; i++){</b>
+<b class="fc"><i>97</i>&nbsp;            for(int j=i, k=0; j&lt;N &amp;&amp; k&lt;N; j++, k++){</b>
+<b class="fc"><i>98</i>&nbsp;                combination[k] = matrix[j][k];</b>
+<i>99</i>&nbsp;            }
+<b class="fc"><i>100</i>&nbsp;            combinations.add(combination.clone());</b>
+<i>101</i>&nbsp;        }
+<b class="fc"><i>102</i>&nbsp;        return combinations;</b>
+<i>103</i>&nbsp;    }
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;    /**
+<i>106</i>&nbsp;     *
+<i>107</i>&nbsp;     * @param originalMatrix
+<i>108</i>&nbsp;     * @return String[][] mirrorMatrix
+<i>109</i>&nbsp;     */
+<i>110</i>&nbsp;    public static String[][] getMirrorMatrix(String[][] originalMatrix){
+<b class="fc"><i>111</i>&nbsp;        int N = originalMatrix.length;</b>
+<b class="fc"><i>112</i>&nbsp;        String[][] mirrorMatrix = new String[N][N];</b>
+<b class="fc"><i>113</i>&nbsp;        for (int i=0; i&lt;N;i++){</b>
+<b class="fc"><i>114</i>&nbsp;            for (int j=N-1,k=0;j&gt;=0 &amp;&amp; k&lt;N;j--,k++){</b>
+<b class="fc"><i>115</i>&nbsp;                mirrorMatrix[i][k]= originalMatrix[i][j];</b>
+<i>116</i>&nbsp;            }
+<i>117</i>&nbsp;        }
+<b class="fc"><i>118</i>&nbsp;        return mirrorMatrix;</b>
+<i>119</i>&nbsp;    }
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;}
+<i>122</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-02-08 20:14</div>
+</div>
+</body>
+</html>

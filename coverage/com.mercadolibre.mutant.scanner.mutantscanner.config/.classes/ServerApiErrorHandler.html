@@ -1,0 +1,131 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ServerApiErrorHandler</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.mercadolibre.mutant.scanner.mutantscanner.config</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ServerApiErrorHandler (com.mercadolibre.mutant.scanner.mutantscanner.config)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ServerApiErrorHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33,3%
+  </span>
+  <span class="absValue">
+    (1/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    11,1%
+  </span>
+  <span class="absValue">
+    (1/ 9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.mercadolibre.mutant.scanner.mutantscanner.config;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.fasterxml.jackson.databind.exc.MismatchedInputException;
+<i>4</i>&nbsp;import com.mercadolibre.mutant.scanner.mutantscanner.domain.dto.GeneralResponse;
+<i>5</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>6</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>7</i>&nbsp;import org.springframework.validation.ObjectError;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import org.springframework.web.bind.MethodArgumentNotValidException;
+<i>10</i>&nbsp;import org.springframework.web.bind.annotation.ControllerAdvice;
+<i>11</i>&nbsp;import org.springframework.web.bind.annotation.ExceptionHandler;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;import java.util.List;
+<i>14</i>&nbsp;import java.util.stream.Collectors;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;@ControllerAdvice
+<b class="fc"><i>17</i>&nbsp;public class ServerApiErrorHandler {</b>
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    /**
+<i>20</i>&nbsp;     *
+<i>21</i>&nbsp;     * @param methodArgumentNotValidException
+<i>22</i>&nbsp;     * @return ResponseEntity&lt;String&gt; errorMessage
+<i>23</i>&nbsp;     */
+<i>24</i>&nbsp;    @ExceptionHandler(MethodArgumentNotValidException.class)
+<i>25</i>&nbsp;    public ResponseEntity&lt;Object&gt; exception(MethodArgumentNotValidException methodArgumentNotValidException) {
+<b class="nc"><i>26</i>&nbsp;        List&lt;ObjectError&gt; errors = methodArgumentNotValidException.getAllErrors();</b>
+<b class="nc"><i>27</i>&nbsp;        String errorMessage = &quot;&quot;;</b>
+<b class="nc"><i>28</i>&nbsp;        if (!errors.isEmpty()) {</b>
+<b class="nc"><i>29</i>&nbsp;            errorMessage = errors.stream().map(error -&gt; error.getDefaultMessage()).collect(Collectors.joining(&quot;\n&quot;));</b>
+<i>30</i>&nbsp;        } else {
+<b class="nc"><i>31</i>&nbsp;            errorMessage = &quot;MethodArgumentNotValidException occured.&quot;;</b>
+<i>32</i>&nbsp;        }
+<b class="nc"><i>33</i>&nbsp;        return new ResponseEntity&lt;&gt;(new GeneralResponse(errorMessage), HttpStatus.BAD_REQUEST);</b>
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    /**
+<i>37</i>&nbsp;     *
+<i>38</i>&nbsp;     * @param mismatchedInputException
+<i>39</i>&nbsp;     * @return ResponseEntity&lt;GeneralResponse&gt; errorMessage
+<i>40</i>&nbsp;     */
+<i>41</i>&nbsp;    @ExceptionHandler(MismatchedInputException.class)
+<i>42</i>&nbsp;    public ResponseEntity&lt;Object&gt; exception(MismatchedInputException mismatchedInputException) {
+<b class="nc"><i>43</i>&nbsp;        return new ResponseEntity&lt;&gt;(</b>
+<b class="nc"><i>44</i>&nbsp;                new GeneralResponse(&quot;Input data is not in a valid format, should be a &quot;+mismatchedInputException.getTargetType().getTypeName()),</b>
+<i>45</i>&nbsp;                HttpStatus.BAD_REQUEST);
+<i>46</i>&nbsp;    }
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-02-08 20:14</div>
+</div>
+</body>
+</html>

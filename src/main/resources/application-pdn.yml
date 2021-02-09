@@ -1,22 +1,29 @@
 server:
     port: 8090
 
-cloud:
-    aws:
-        stack:
-            auto: false
-        region:
-            auto: false
-            static: us-east-1
+spring:
+    datasource:
+        password: BZCy3o4iyYTUCEjSRsVM
+        url: jdbc:postgresql://meli-1.cpbqra8kp9bq.us-east-1.rds.amazonaws.com/dna_meli
+        username: postgres
 
-aws:
-    secretsmanager:
-        enabled: true
-        fail-fast: false
-        prefix: /secrets
-        name: ${spring.application.name}
-    paramstore:
-        enabled: true
-        fail-fast: false
-        prefix: /config
-        name: ${spring.application.name}
+#
+#cloud:
+#    aws:
+#        stack:
+#            auto: false
+#        region:
+#            auto: false
+#            static: us-east-1
+#
+#aws:
+#    secretsmanager:
+#        enabled: true
+#        fail-fast: false
+#        prefix: /secrets
+#        name: ${spring.application.name}
+#    paramstore:
+#        enabled: true
+#        fail-fast: false
+#        prefix: /config
+#        name: ${spring.application.name}

@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DNAScannerController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.mercadolibre.mutant.scanner.mutantscanner.controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DNAScannerController (com.mercadolibre.mutant.scanner.mutantscanner.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DNAScannerController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.mercadolibre.mutant.scanner.mutantscanner.controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.mercadolibre.mutant.scanner.mutantscanner.domain.dto.DNARequestDTO;
+<i>4</i>&nbsp;import com.mercadolibre.mutant.scanner.mutantscanner.domain.dto.GeneralResponse;
+<i>5</i>&nbsp;import com.mercadolibre.mutant.scanner.mutantscanner.service.IDNAScannerService;
+<i>6</i>&nbsp;import io.swagger.annotations.ApiOperation;
+<i>7</i>&nbsp;import io.swagger.annotations.ApiResponse;
+<i>8</i>&nbsp;import io.swagger.annotations.ApiResponses;
+<i>9</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>10</i>&nbsp;import org.springframework.http.HttpStatus;
+<i>11</i>&nbsp;import org.springframework.http.MediaType;
+<i>12</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>13</i>&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+<i>14</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i>15</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+<i>16</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;import javax.validation.Valid;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;@RestController
+<i>21</i>&nbsp;@RequestMapping(&quot;/mutant&quot;)
+<b class="fc"><i>22</i>&nbsp;public class DNAScannerController {</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;	@Autowired
+<i>25</i>&nbsp;	private IDNAScannerService dnaScannerService;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;	@ApiOperation(value = &quot;Scan DNA&quot;, consumes = MediaType.APPLICATION_JSON_VALUE)
+<i>28</i>&nbsp;	@ApiResponses({ @ApiResponse(code = 200, message = &quot;OK&quot;), @ApiResponse(code = 403, message = &quot;Forbidden&quot;),
+<i>29</i>&nbsp;			@ApiResponse(code = 400, message = &quot;Bad Request&quot;) })
+<i>30</i>&nbsp;	@PostMapping(&quot;/&quot;)
+<i>31</i>&nbsp;	public ResponseEntity&lt;GeneralResponse&gt; scanDNA(@Valid @RequestBody(required = true) DNARequestDTO dna) {
+<b class="fc"><i>32</i>&nbsp;		return dnaScannerService.isMutant(dna.getDna())</b>
+<b class="fc"><i>33</i>&nbsp;				? new ResponseEntity&lt;&gt;(new GeneralResponse(&quot;Dna scanned belongs to a mutant&quot;), HttpStatus.OK)</b>
+<b class="fc"><i>34</i>&nbsp;				: new ResponseEntity&lt;&gt;(new GeneralResponse(&quot;Dna Scanned belongs to a human&quot;), HttpStatus.FORBIDDEN);</b>
+<i>35</i>&nbsp;	}
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-02-08 20:14</div>
+</div>
+</body>
+</html>

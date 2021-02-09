@@ -7,6 +7,9 @@ import com.mercadolibre.mutant.scanner.mutantscanner.service.IStatsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 @Service
 public class StatsServiceImpl implements IStatsService {
 
@@ -16,11 +19,11 @@ public class StatsServiceImpl implements IStatsService {
     @Override
     public StatsResponseDTO getStats() {
         StatsResponseDTO response = new StatsResponseDTO();
-        long humans = dnaRepository.countByMutantFalse();
-        long mutants = dnaRepository.countByMutantTrue();
+        double humans = dnaRepository.countByMutantFalse();
+        double mutants = dnaRepository.countByMutantTrue();
         double ratio = humans==0? mutants: (mutants/humans);
-        response.setCountHumanDNA(humans);
-        response.setCountMutantDNA(mutants);
+        response.setCountHumanDNA((long) humans);
+        response.setCountMutantDNA((long) mutants);
         response.setRatio(ratio);
         return response;
     }
