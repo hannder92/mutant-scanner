@@ -75,12 +75,19 @@ Test-Automáticos, Code coverage > 80%, Diagrama de Secuencia / Arquitectura del
 - Spring Boot
 - SpringJPA
 - Postgres
-- AWS
+- AWS EC2
+- AWS S3
+- AWS RDS
 
 ##### Testing
-- JUnit
+- JUnit 5
+- Mockito
 
 ## Requerimientos
 - Java >= 11
 - Spring Boot 2.4.2
 - Postgres >= 13.0
+- Gradle 6.7
+
+
+
