@@ -120,7 +120,7 @@ gradle test
 - URL WEB: http://ec2-52-90-228-61.compute-1.amazonaws.com:8090/xmen-project/api/
 - URL SWAGGER: http://ec2-52-90-228-61.compute-1.amazonaws.com:8090/xmen-project/api/swagger-ui.html
 
-## Docker Collection
+## Postman Collection
 -  https://github.com/hannder92/mutant-scanner/blob/master/postman/mutant-scanner.postman_collection.json
 
 ## Gracias
